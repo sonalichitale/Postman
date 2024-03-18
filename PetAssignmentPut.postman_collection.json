@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "4738624b-8473-4f99-92e5-c97d475d2d05",
+		"name": "PetAssignmentPut",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33282138"
+	},
+	"item": [
+		{
+			"name": "PutPet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let json_response = pm.response.json();\r",
+							"console.log(json_response);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verified ID 20021\",  () => {\r",
+							"    pm.expect(pm.response.json().category.id).to.equal(20021)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 123,\r\n  \"category\": {\r\n    \"id\": 20021,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"{{status}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{testurl}}/v2/pet",
+					"host": [
+						"{{testurl}}"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
